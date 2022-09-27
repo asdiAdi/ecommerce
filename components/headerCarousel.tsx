@@ -59,9 +59,11 @@ export default function HeaderCarousel() {
             {
                 Array(8).fill(0).map((val, idx) => (
                     <div key={uuidv4()}>
-                        <Image src={`/home-carousel/${idx + 1}.jpg`} alt="hello world"
+                        <Image src={`/home-carousel/${idx + 1}.jpg`}
                             height={680}
-                            width={1920} />
+                            width={1920} 
+                            alt={`img-${idx+1}`}
+                            />
                     </div>
                 ))
             }

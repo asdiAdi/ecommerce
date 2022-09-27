@@ -17,6 +17,7 @@ export default function ShopGrid(props: { data: ShopGridData }) {
                         <Image src={dat.imgSrc}
                             width={873}
                             height={553}
+                            alt={dat.text}
                         />
                     </div>
 

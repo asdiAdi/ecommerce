@@ -3,7 +3,6 @@ import styles from "../styles/topnav.module.css"
 import useWindowSize from "../hooks/useWindowSize";
 import Image from "next/image";
 import logo from "../public/logo.png"
-import Head from "next/head";
 
 export default function Topnav() {
     const [toggleCategory, setToggleCategory] = useState<boolean>(false);
@@ -19,12 +18,6 @@ export default function Topnav() {
     }
     return (
         <div className={styles.container}>
-            <Head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet" />
-            </Head>
-
             <div className={styles['nav-mobile']}>
                 <div className={styles.banner}>
                     <Image src={logo} alt="Logo" width={40} height={40} />
