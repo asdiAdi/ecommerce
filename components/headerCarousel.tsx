@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { v4 as uuidv4 } from 'uuid';
 
 function NextArrow(props: { className?: string, style?: any, onClick?: () => {} }) {
-    console.log(props.style)
     return (
         <div
             className={props.className}
@@ -24,7 +23,6 @@ function NextArrow(props: { className?: string, style?: any, onClick?: () => {} 
 }
 
 function PrevArrow(props: { className?: string, style?: any, onClick?: () => {} }) {
-    console.log(props.style)
     return (
         <div
             className={props.className}
@@ -47,29 +45,31 @@ export default function HeaderCarousel() {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />
     };
     return (
-        <div style={{marginBottom: '60px'}}>
+        <div style={{ marginBottom: '60px' }}>
             <Slider {...settings}>
-            {
-                Array(8).fill(0).map((val, idx) => (
-                    <div key={uuidv4()}>
-                        <Image src={`/home-carousel/${idx + 1}.jpg`}
-                            height={680}
-                            width={1920} 
-                            alt={`img-${idx+1}`}
+                {
+                    Array(8).fill(0).map((val, idx) => (
+                        <div key={uuidv4()}>
+                            <Image src={`/home-carousel/${idx + 1}.jpg`}
+                                height={680}
+                                width={1920}
+                                alt={`img-${idx + 1}`}
                             />
-                    </div>
-                ))
-            }
+                        </div>
+                    ))
+                }
 
-        </Slider>
+            </Slider>
         </div>
-        
+
     )
 }

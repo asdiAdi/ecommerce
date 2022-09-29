@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { v4 as uuidv4 } from 'uuid';
 
 function NextArrow(props: { className?: string, style?: any, onClick?: () => {} }) {
-    console.log(props.style)
     return (
         <div
             className={props.className}
@@ -24,7 +23,6 @@ function NextArrow(props: { className?: string, style?: any, onClick?: () => {} 
 }
 
 function PrevArrow(props: { className?: string, style?: any, onClick?: () => {} }) {
-    console.log(props.style)
     return (
         <div
             className={props.className}

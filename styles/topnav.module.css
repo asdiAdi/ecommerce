@@ -17,7 +17,7 @@
     align-items: center;
     gap: 20px;
     margin: auto;
-    
+
 }
 
 .nav-mobile {
@@ -29,6 +29,7 @@
     max-width: 1024px;
     flex-wrap: wrap;
 }
+
 .input {
     line-height: 3;
     border: none;
@@ -37,7 +38,8 @@
     padding: 0;
     width: calc(100vw - 225px);
 }
-.cart-quantity{
+
+.cart-quantity {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -46,6 +48,7 @@
     color: white;
     margin: 20px 0px 0px 30px;
 }
+
 .search-icon {
     height: 100%;
     border-radius: 5px;
@@ -54,7 +57,8 @@
     color: white;
     background-color: #B8743A;
 }
-.nav{
+
+.nav {
     list-style-type: none;
     border-top: 1px solid gray;
     margin: 0;
@@ -65,52 +69,177 @@
     font-size: large;
     font-weight: 600;
 }
-.nav li{
+
+.nav li {
     display: inline;
     padding: 0 20px;
     margin: auto;
     color: black;
 }
-.nav li :hover{
-    color:#B8743A
+
+.nav li :hover {
+    color: #B8743A
 }
+
 .drop-down {
     width: 250px;
     position: absolute;
     left: 0;
     top: 40px;
-    background:rgb(228, 228, 228);
+    background: rgb(228, 228, 228);
     padding: 10px;
     border-radius: 5px;
+    z-index: 1;
 }
-.drop-down:before{
-    content:"";
+
+.drop-down:before {
+    content: "";
     position: absolute;
     height: 50px;
     width: 130px;
     top: -50px;
     left: 0;
 }
-.drop-down ul{
+
+.drop-down ul {
     margin: 0;
     padding: 0;
     list-style: 0;
 }
+
 .drop-down ul li {
     display: block;
     padding: 5px;
 }
+
+.mobile-navbar {
+    animation-name: slide-in;
+    animation-duration: 200ms;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    height: calc(100vh - 220px);
+    top: 220px;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 10;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+.mobile-navbar svg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.mobile-navbar ul {
+    padding: 10px;
+}
+
+.mobile-navbar li {
+    /* display: inline; */
+    text-align: left;
+    list-style: none;
+    color: black;
+    padding: 12px 0;
+    position: relative;
+}
+
+.mobile-navbar :hover {
+    color: orange;
+    cursor: pointer;
+}
+.mobile-nav-catin{
+    animation-name: slide-in-x;
+    animation-duration: 200ms;
+    width: 100%;
+    height: calc(100vh - 220px);
+    position: absolute;
+    top:40px;
+    background-color: white;
+    z-index: 10;
+}
+.mobile-nav-catout{
+    animation-name: slide-out-x;
+    animation-duration: 200ms;
+    width: 100%;
+    height: calc(100vh - 220px);
+    position: absolute;
+    transform: translateX(100vw);
+    top:40px;
+    background-color: white;
+    z-index: 10;
+}
+
+.close {
+    position: relative;
+    top: -10px;
+}
+.back {
+    position: relative;
+    float: left;
+    left: 30px;
+    top: 15px;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateY(100vw);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slide-in-x {
+    0% {
+        transform: translateX(100vw);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+@keyframes slide-out-x {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+/* @keyframes slide-out {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+} */
 
 @media (min-width: 380px) {
     .banner {
         font-size: 40px;
     }
 }
+
 @media (min-width: 768px) {
     .banner {
         margin: 0;
         width: auto;
     }
+
     .input {
         width: calc(100vw - 600px);
         max-width: 400px;

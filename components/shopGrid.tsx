@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/shopGrid.module.css"
 import Image from 'next/image';
+import Link from "next/link";
 import { v4 as uuidv4 } from 'uuid';
 type ShopGridData = {
     text: string,
@@ -13,7 +14,7 @@ export default function ShopGrid(props: { data: ShopGridData }) {
             {
                 props.data.map((dat, idx) => (
                     <div className={styles.card} key={uuidv4()}>
-                        <div className={styles.title}>{dat.text}</div>
+                        <Link href='/category/canvasBoard'><a className={styles.title}>{dat.text}</a></Link>
                         <Image src={dat.imgSrc}
                             width={873}
                             height={553}
