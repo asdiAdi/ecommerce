@@ -73,7 +73,7 @@ export default function Topnav() {
                                 {toggleCategory ?
                                     <div className={styles['drop-down']} onMouseLeave={() => handleNavToggle(toggleCategory, setToggleCategory)}>
                                         <ul>
-                                            <li>Canvas Boards</li>
+                                            <li><Link href={'/category/canvas-board'}><a>Canvas Boards</a></Link></li>
                                             <li>Acrylic paint</li>
                                             <li>Palette Knife</li>
                                             <li>Acrylic Medium</li>
