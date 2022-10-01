@@ -1,6 +1,6 @@
 import React from "react";
-import Topbar from "../../components/topbar";
-import Topnav from "../../components/topnav";
+import Topbar from "../components/topbar";
+import Topnav from "../components/topnav";
 
 
 export default function CanvasBoard(){
