@@ -48,7 +48,7 @@ export default function CanvasBoard({ products }) {
     )
 }
 export async function getStaticProps() {
-    let res = await fetch('http://localhost:3000/api/products');
+    let res = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/products');
     let products = await res.json();
     return {
         props: { products }
