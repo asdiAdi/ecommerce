@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 interface IProduct {
 	itemId: String,
 	name:  String,
+	category: String,
 	description:  String,
 	imgLink:  String,
 	price:  Number,
@@ -12,6 +13,10 @@ const productSchema = new mongoose.Schema<IProduct>({
 	itemId: {
 		type: String,
 		required: [true, "itemId required"]
+	},
+	category: {
+		type: String,
+		required: [true, "category required"]
 	},
 	name: {
 		type: String,

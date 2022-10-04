@@ -9,7 +9,7 @@ import TopProductCarousel from '../components/topProductCarousel'
 const data = [
   {
     text: 'Canvas Boards',
-    imgSrc: '/shopGrid/canvas-boards.jpg'
+    imgSrc: '/shopGrid/canvas-board.jpg'
   },
   {
     text: 'Acrylic paint',
