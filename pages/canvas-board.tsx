@@ -45,9 +45,16 @@ export default function CanvasBoard({ products }) {
         </div>
     )
 }
-export async function getStaticProps() {
-    let res = await fetch(`${process.env.VERCEL==='1'?'https://ecommerce-asdiadi.vercel.app/':'http://localhost:3000'}/api/products`);
-    let products = await res.json();
+export async function getServerSideProps() {
+    // let res = await fetch(`${process.env.VERCEL==='1'?'https://ecommerce-asdiadi.vercel.app/':'http://'}${process.env.VERCEL_URL}/api/products`);
+    let products = []
+    let res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
+    try {
+        products = await res.json()
+    } catch (e) {
+        console.log(e)
+    }
+
     return {
         props: { products }
     }
