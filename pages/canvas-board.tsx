@@ -46,7 +46,7 @@ export default function CanvasBoard({ products }) {
     )
 }
 export async function getStaticProps() {
-    let res = await fetch(`${process.env.VERCEL==='1'?'https://':'http://'}${process.env.VERCEL_URL}/api/products`);
+    let res = await fetch(`${process.env.VERCEL==='1'?'https://ecommerce-asdiadi.vercel.app/':'http://localhost:3000'}/api/products`);
     let products = await res.json();
     return {
         props: { products }
