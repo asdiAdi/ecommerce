@@ -8,6 +8,7 @@
     text-align: center;
     font-weight: 500;
 }
+
 .placeholder>* {
     margin: 0;
     position: absolute;
@@ -17,7 +18,34 @@
     transform: translate(-50%, -50%);
 }
 
-.img-container{
-    height: 360px;
-    width: 360px;
+.head-container {
+    margin: 0 12px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+
+.card {
+    
+    height: 222px;
+    width: auto;
+    margin: 0 12px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.img-container {
+    height: 75px;
+    width: 75px;
+}
+
+@media (min-width: 768px) {
+    .img-container {
+        height: 360px;
+        width: 360px;
+    }
+
 }

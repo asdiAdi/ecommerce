@@ -49,7 +49,7 @@ export default async (req: any, res: any) => {
         await mongooseConnect();
         // @ts-ignore
         const dat = await Product.find();
-        res.json(dat);
+        res.json(dat.filter((val,idx) => idx < 50));
     } catch (e) {
         console.error(e);
         res.status(405).end();
