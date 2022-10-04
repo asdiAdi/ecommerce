@@ -57,8 +57,9 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
 }
 export async function getServerSideProps() {
     let products: IProduct[] = []
-    // let res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
-    let res = await fetch('http://localhost:3000/api/products');
+    let res = null;
+    if (process.env.VERCEL === '1')res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
+    else res = await fetch('http://localhost:3000/api/products');
     try {
         products = await res.json()
     } catch (e) {
