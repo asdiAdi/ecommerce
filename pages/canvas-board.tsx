@@ -20,6 +20,9 @@ const Card = ({ product }) => {
 
     )
 }
+console.log(process.env.NEXT_PUBLIC_VERCEL_URL)
+console.log(process.env.VERCEL_URL)
+console.log(process.env.SAMPLE_ENV)
 
 
 export default function CanvasBoard({ products }) {
@@ -33,13 +36,13 @@ export default function CanvasBoard({ products }) {
                     <Image src='/shopGrid/canvas-boards.jpg' width={873} height={553}></Image>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada, diam sed porttitor gravida, urna nunc suscipit tortor, a suscipit massa justo ut est. Maecenas lorem ipsum, fermentum sed mi vel, accumsan ullamcorper ligula. Integer suscipit felis augue, eu elementum nibh tincidunt ac. Pellentesque tempor sollicitudin neque ut volutpat. Aliquam faucibus ligula ac enim maximus dignissim. Quisque venenatis neque dolor, eget mollis ipsum consequat in. Pellentesque dictum pulvinar fermentum. Vestibulum nec pharetra erat, egestas hendrerit eros. Fusce in enim pharetra, auctor felis sed, vehicula augue. </p>
                 </div>
-                <div className={styles['product-grid']}>
+                {/* <div className={styles['product-grid']}>
                     {
                         products.map(product => (
                             <Card product={product} key={uuidv4()} />
                         ))
                     }
-                </div>
+                </div> */}
 
 
             </main>
@@ -47,10 +50,10 @@ export default function CanvasBoard({ products }) {
         </div>
     )
 }
-export async function getStaticProps() {
-    let res = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/products');
-    let products = await res.json();
-    return {
-        props: { products }
-    }
-}
+// export async function getStaticProps() {
+//     let res = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/products');
+//     let products = await res.json();
+//     return {
+//         props: { products }
+//     }
+// }
