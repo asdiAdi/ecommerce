@@ -19,6 +19,7 @@
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-slick": "^0.23.10",

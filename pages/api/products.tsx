@@ -48,8 +48,13 @@ export default async (req: any, res: any) => {
     try {
         await mongooseConnect();
         // @ts-ignore
-        const dat = await Product.find();
+        const dat = await Product.find().lean()
+        // let del = new Array(900).fill(0)
+        // for(let i = 0; i < del.length; i++){
+        //     await Product.findOneAndDelete({name:'Canvas Board '+(i+101)})
+        // }
         res.json(dat.filter((val,idx) => idx < 50));
+        // res.send('ok')
     } catch (e) {
         console.error(e);
         res.status(405).end();
