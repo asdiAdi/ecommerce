@@ -11,7 +11,6 @@ const Card = (props: { product: IProduct }) => {
     return (
         <div className={styles.card}>
 
-            <div>{props.product.name}</div>
             <div className={styles['img-container']}>
                 {/* This whole div is a PLACEHOLDER, must be changed to <Image src='' />  if you have an image database */}
                 <div className={styles.placeholder} style={{ backgroundColor: props.product.imgLink as string }}>
@@ -19,10 +18,16 @@ const Card = (props: { product: IProduct }) => {
                 </div>
                 {/* End PLACEHOLDER */}
             </div>
-            <div>{props.product.price.toString()}</div>
-            <div>{props.product.quantity.toString()}</div>
-            <form>
-                <input type="number" min='0' max={props.product.quantity.toString()} />
+            <dl>
+                <dt>Name:</dt>
+                <dd>{props.product.name}</dd>
+                <dt>Price:</dt>
+                <dd>{'₱' + props.product.price.toString()}</dd>
+                <dt>Quantity:</dt>
+                <dd>{props.product.quantity.toString()}</dd>
+            </dl>
+            <form action={`/api/product/${props.product.itemId}`}>
+                <input type="number" min='0' max={props.product.quantity.toString()} required />
                 <button type='submit'>+ Cart</button>
             </form>
 
@@ -33,14 +38,26 @@ const Card = (props: { product: IProduct }) => {
 export default function CanvasBoard(props: { products: IProduct[] }) {
     return (
         <div>
-            <Topbar />
-            <Topnav />
-            <main>
+            <header>
+                <Topbar />
+                <Topnav />
+            </header>
+            <main className={styles['main-container']}>
                 <div className={styles['head-container']}>
                     <h1>Canvas & Boards</h1>
                     <Image src='/shopGrid/canvas-board.jpg' width={873} height={553}></Image>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada, diam sed porttitor gravida, urna nunc suscipit tortor, a suscipit massa justo ut est. Maecenas lorem ipsum, fermentum sed mi vel, accumsan ullamcorper ligula. Integer suscipit felis augue, eu elementum nibh tincidunt ac. Pellentesque tempor sollicitudin neque ut volutpat. Aliquam faucibus ligula ac enim maximus dignissim. Quisque venenatis neque dolor, eget mollis ipsum consequat in. Pellentesque dictum pulvinar fermentum. Vestibulum nec pharetra erat, egestas hendrerit eros. Fusce in enim pharetra, auctor felis sed, vehicula augue. </p>
                 </div>
+                {/* <div>
+                    <ul>
+                        <li>Image</li>
+                        <li>Product Name</li>
+                        <li>Availability</li>
+                        <li>Unit Price</li>
+                        <li>Qty</li>
+                        <li>Add to Cart</li>
+                    </ul>
+                </div> */}
                 <div className={styles['product-grid']}>
                     {
                         props.products.map(product => (
@@ -58,7 +75,7 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
 export async function getServerSideProps() {
     let products: IProduct[] = []
     let res = null;
-    if (process.env.VERCEL === '1')res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
+    if (process.env.VERCEL === '1') res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
     else res = await fetch('http://localhost:3000/api/products');
     try {
         products = await res.json()

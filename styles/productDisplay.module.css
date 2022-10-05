@@ -1,3 +1,7 @@
+.main-container{
+    max-width: 1024px;
+    margin: auto;
+}
 .placeholder {
     position: relative;
     height: 360px;
@@ -18,8 +22,13 @@
     transform: translate(-50%, -50%);
 }
 
-.head-container {
+.head-container{
     margin: 0 12px;
+    text-align: center;
+    max-width: 1024px;
+}
+.head-container p {
+    text-align: left;
 }
 
 .product-grid {
@@ -29,23 +38,92 @@
 }
 
 .card {
-    
-    height: 222px;
+    height: 130px;
     width: auto;
     margin: 0 12px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
+.card > * {
+    align-self: start;
+    justify-self: center;
+    margin-top:20px;
+}
+.card dl{
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+}
+.card dd{
+    margin: 0;
+    font-weight: normal;
+}
+.card form{
+    align-self: center;
+}
+.card input, .card button {
+    display: inline-block;
+    height: 30px;
+    width: 50px;
+    padding: 0;
+    margin: 0 2px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 5px;
+}
+.card input {
+    border: 1px solid rgb(204, 204, 204);
+}
+.card button {
+    color: white;
+    background-color: rgb(229, 9, 20);
+    transition: all 0.2s ease 0s;
+    border: none;
+}
+/* .card .img-container {
+    
+    margin-top: 20px;
+} */
+
 
 .img-container {
     height: 75px;
     width: 75px;
+    float: left;
 }
 
 @media (min-width: 768px) {
-    .img-container {
-        height: 360px;
-        width: 360px;
+    
+    .card {
+        height: 100px;
+        grid-template-columns: 3fr 10fr 5fr;
     }
-
+    .card > * {
+    }
+    .card dl{
+        /* width: 100%; */
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-auto-columns: auto;
+        grid-auto-flow: column;
+        column-gap: 120px;
+        align-self: center;
+    }
+    .card dd{
+    }
+    .card form{
+        
+    }
+    .card input, .card button {
+        width: 80px;
+        height: 50px;
+    }
+    .card input {
+    }
+    .card button {
+    }
 }
