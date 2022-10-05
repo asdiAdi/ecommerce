@@ -25,22 +25,22 @@
 .head-container{
     margin: 0 12px;
     text-align: center;
-    max-width: 1024px;
 }
 .head-container p {
     text-align: left;
 }
 
 .product-grid {
+    margin: 0 12px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 6px;
+    margin-bottom: 100px;
 }
 
 .card {
     height: 130px;
     width: auto;
-    margin: 0 12px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 12px;
@@ -84,11 +84,6 @@
     transition: all 0.2s ease 0s;
     border: none;
 }
-/* .card .img-container {
-    
-    margin-top: 20px;
-} */
-
 
 .img-container {
     height: 75px;

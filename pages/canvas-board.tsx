@@ -1,11 +1,11 @@
 import React from "react";
 import Topbar from "../components/topbar";
 import Topnav from "../components/topnav";
+import Footer from "../components/footer";
 import styles from "../styles/productDisplay.module.css"
 import Image from "next/image";
 import { v4 as uuidv4 } from 'uuid';
 import { IProduct } from '../models/Product';
-
 
 const Card = (props: { product: IProduct }) => {
     return (
@@ -65,10 +65,8 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
                         ))
                     }
                 </div>
-
-
             </main>
-
+            <Footer/>
         </div>
     )
 }

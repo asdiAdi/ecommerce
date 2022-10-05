@@ -1,51 +1,47 @@
 import Topbar from "../components/topbar";
 import Topnav from "../components/topnav";
+import Footer from "../components/footer";
+import styles from "../styles/login.module.css";
 
 export default function Login() {
     return (
-        <div>
+        <div className={styles.container}>
             <header>
                 <Topbar />
                 <Topnav />
             </header>
-            <main className="container">
-                <h1 className="page-heading">Authentication</h1>
-                <form action="https://theoilpaintstore.com/login" method="post" id="create-account_form" className="box">
-                    <h3 className="page-subheading">Create an account</h3>
-                    <p>Please enter your email address to create an account.</p>
-                    <div className="alert alert-danger" id="create_account_error" style={{ display: 'none' }}></div>
-                    <div className="form-group">
-                        <label htmlFor="email_create">Email address</label>
-                        <input type="email" className="is_required validate account_input form-control" data-validate="isEmail" id="email_create" name="email_create" value="" />
-                        <div className="submit">
-                            <input type="hidden" className="hidden" name="back" value="my-account" />						<button className="btn btn-outline button button-medium exclusive" type="submit" id="SubmitCreate" name="SubmitCreate">
-                                <span>
-                                    <i className="fa fa-user left"></i>
-                                    Create an account
-                                </span>
-                            </button>
-                            <input type="hidden" className="hidden" name="SubmitCreate" value="Create an account" />
-                        </div>
-                    </div>
-                </form>
-                <form action="https://theoilpaintstore.com/login" method="post" id="login_form" className="box">
-                    <h3 className="page-subheading">Already registered?</h3>
-                    <label htmlFor="email">Email address</label>
-                    <input className="is_required validate account_input form-control" data-validate="isEmail" type="email" id="email" name="email" value="" />
-                    <label htmlFor="passwd">Password</label>
-                    <input className="is_required validate account_input form-control" type="password" data-validate="isPasswd" id="passwd" name="passwd" value="" />
-                    <p className="lost_password form-group"><a href="https://theoilpaintstore.com/password-recovery" title="Recover your forgotten password" rel="nofollow">Forgot your password?</a></p>
-                    <p className="submit">
-                        <input type="hidden" className="hidden" name="back" value="my-account" />						<button type="submit" id="SubmitLogin" name="SubmitLogin" className="button btn btn-outline button-medium">
-                            <span>
-                                <i className="fa fa-lock left"></i>
+            <main className={styles['main-container']}>
+                <div className={styles['form-container']}>
+                    <section>
+                        <h2>Sign In</h2>
+                        <p>Please enter your email address and your password to sign in. Passwords are case sensitive.</p>
+                        <form action="#" className={styles.form}>
+                            <label htmlFor="email">Email address</label>
+                            <input className={styles.email} data-validate="isEmail" type="email" id="email" name="email" placeholder="Enter email here" />
+                            <label htmlFor="password">Password</label>
+                            <input className={styles.password} type="password" id="password" name="password" placeholder="Enter password here" />
+                            <button type="submit">
                                 Sign in
-                            </span>
-                        </button>
-                    </p>
-                </form>
+                            </button>
+                        </form>
+                    </section>
+                    <section>
+                        <h3 className="page-subheading">Create an account</h3>
+                        <p>Please enter your email address to create an account.</p>
+                        <div className={styles.newline}></div>
+                        <form action="#" className={styles.form}>
+                            <label htmlFor="email_create">Email address</label>
+                            <input type="email" id="email_create" name="email_create" placeholder="Enter email here" />
+                            <input type="hidden" className="hidden" name="back" value="my-account" />
+                            <button type="submit">
+                                Create an account
+                            </button>
+                        </form>
+                    </section>
 
+                </div>
             </main>
+            <Footer/>
         </div>
 
     )
