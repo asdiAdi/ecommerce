@@ -35,7 +35,21 @@ const Card = (props: { product: IProduct }) => {
 
     )
 }
+
 export default function CanvasBoard(props: { products: IProduct[] }) {
+    const [isFetched, setIsFetched] = React.useState<boolean>(false);
+    const [firstFetch, setFirstFetch] = React.useState<boolean>(false);
+    const [products, setProducts] = React.useState<any>(undefined);
+    if (!firstFetch){    
+        fetch('http://localhost:3000/api/products')
+            .then((res)=> res.json())
+            .then((data)=> {
+                setProducts(data);
+                setIsFetched(true);
+            })
+            .catch((e)=> console.log(e));
+        setFirstFetch(true);
+    }
     return (
         <div>
             <header>
@@ -59,10 +73,11 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
                     </ul>
                 </div> */}
                 <div className={styles['product-grid']}>
-                    {
-                        props.products.map(product => (
+                    { isFetched?
+                        products.map(product => (
                             <Card product={product} key={uuidv4()} />
-                        ))
+                        )) 
+                        : <div style={{fontSize: 'larger', fontWeight:'800'}}>Connecting to MongoDB Atlas...</div> 
                     }
                 </div>
             </main>
@@ -70,17 +85,17 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
         </div>
     )
 }
-export async function getServerSideProps() {
-    let products: IProduct[] = []
-    let res = null;
-    if (process.env.VERCEL === '1') res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
-    else res = await fetch('http://localhost:3000/api/products');
-    try {
-        products = await res.json()
-    } catch (e) {
-        console.log(e)
-    }
-    return {
-        props: { products }
-    }
-}
+// export async function getServerSideProps() {
+//     let products: IProduct[] = []
+//     let res = null;
+//     if (process.env.VERCEL === '1') res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
+//     else res = await fetch('http://localhost:3000/api/products');
+//     try {
+//         products = await res.json()
+//     } catch (e) {
+//         console.log(e)
+//     }
+//     return {
+//         props: { products }
+//     }
+// }
