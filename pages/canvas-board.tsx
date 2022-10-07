@@ -41,7 +41,7 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
     const [firstFetch, setFirstFetch] = React.useState<boolean>(false);
     const [products, setProducts] = React.useState<any>(undefined);
     if (!firstFetch){    
-        fetch('http://localhost:3000/api/products')
+        fetch( process.env.VERCEL === '1'?'https://ecommerce-ivory-six.vercel.app/api/products':'http://localhost:3000/api/products')
             .then((res)=> res.json())
             .then((data)=> {
                 setProducts(data);
