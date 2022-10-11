@@ -69,7 +69,9 @@ export default function Category({url}) {
     }
     if (!firstFetch) {
         // fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api' + router.asPath : 'http://localhost:3000/api' + router.asPath)
-        fetch('https://'+ url + '/api' + router.asPath)
+        fetch('https://'+ url + '/api' + router.asPath, {
+            mode:'no-cors'
+        })
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
