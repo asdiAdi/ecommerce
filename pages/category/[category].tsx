@@ -52,6 +52,10 @@ const categories = [
     'oil-medium'
 ]
 
+const categoryTitles = [
+    
+]
+
 let checkRoute = false;
 export default function Category() {
     const router = useRouter();
