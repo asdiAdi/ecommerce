@@ -1,11 +1,13 @@
 import React from "react";
-import Topbar from "../components/topbar";
-import Topnav from "../components/topnav";
-import Footer from "../components/footer";
-import styles from "../styles/productDisplay.module.css"
+import Topbar from "../../components/topbar";
+import Topnav from "../../components/topnav";
+import Footer from "../../components/footer";
+import styles from "../../styles/productDisplay.module.css"
 import Image from "next/image";
 import { v4 as uuidv4 } from 'uuid';
-import { IProduct } from '../models/Product';
+import { IProduct } from '../../models/Product';
+import { useRouter } from 'next/router'
+import Error404 from "../404";
 
 const Card = (props: { product: IProduct }) => {
     return (
@@ -35,21 +37,46 @@ const Card = (props: { product: IProduct }) => {
 
     )
 }
+const categories = [
+    'canvas-board',
+    'acrylic-paint',
+    'palette-knife',
+    'acrylic-medium',
+    'brush',
+    'oil-slick',
+    'golden-fluid-acrylic',
+    'encaustic-paint',
+    'easel',
+    'oil-paint',
+    'watercolor',
+    'oil-medium'
+]
 
-export default function CanvasBoard(props: { products: IProduct[] }) {
+let checkRoute = false;
+export default function Category() {
+    const router = useRouter();
+    const { category } = router.query;
     const [isFetched, setIsFetched] = React.useState<boolean>(false);
     const [firstFetch, setFirstFetch] = React.useState<boolean>(false);
     const [products, setProducts] = React.useState<any>(undefined);
-    if (!firstFetch){    
-        fetch( process.env.VERCEL === '1'?'https://ecommerce-ivory-six.vercel.app/api/products':'http://localhost:3000/api/products')
-            .then((res)=> res.json())
-            .then((data)=> {
+    if (!checkRoute) {
+        if (!categories.includes(category as string)) {
+            return <Error404/>
+        } 
+        checkRoute = true;
+    }
+    if (!firstFetch) {
+        // fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api/products' : 'http://localhost:3000/api/products')
+        fetch(process.env.VERCEL_URL + '/api/products')
+            .then((res) => res.json())
+            .then((data) => {
                 setProducts(data);
                 setIsFetched(true);
             })
-            .catch((e)=> console.log(e));
+            .catch((e) => console.log(e));
         setFirstFetch(true);
     }
+    
     return (
         <div>
             <header>
@@ -62,40 +89,16 @@ export default function CanvasBoard(props: { products: IProduct[] }) {
                     <Image src='/shopGrid/canvas-board.jpg' width={873} height={553}></Image>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada, diam sed porttitor gravida, urna nunc suscipit tortor, a suscipit massa justo ut est. Maecenas lorem ipsum, fermentum sed mi vel, accumsan ullamcorper ligula. Integer suscipit felis augue, eu elementum nibh tincidunt ac. Pellentesque tempor sollicitudin neque ut volutpat. Aliquam faucibus ligula ac enim maximus dignissim. Quisque venenatis neque dolor, eget mollis ipsum consequat in. Pellentesque dictum pulvinar fermentum. Vestibulum nec pharetra erat, egestas hendrerit eros. Fusce in enim pharetra, auctor felis sed, vehicula augue. </p>
                 </div>
-                {/* <div>
-                    <ul>
-                        <li>Image</li>
-                        <li>Product Name</li>
-                        <li>Availability</li>
-                        <li>Unit Price</li>
-                        <li>Qty</li>
-                        <li>Add to Cart</li>
-                    </ul>
-                </div> */}
                 <div className={styles['product-grid']}>
-                    { isFetched?
+                    {isFetched ?
                         products.map(product => (
                             <Card product={product} key={uuidv4()} />
-                        )) 
-                        : <div style={{fontSize: 'larger', fontWeight:'800'}}>Connecting to MongoDB Atlas...</div> 
+                        ))
+                        : <div style={{ fontSize: 'larger', fontWeight: '800' }}>Connecting to MongoDB Atlas...</div>
                     }
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }
-// export async function getServerSideProps() {
-//     let products: IProduct[] = []
-//     let res = null;
-//     if (process.env.VERCEL === '1') res = await fetch('https://ecommerce-ivory-six.vercel.app/api/products');
-//     else res = await fetch('http://localhost:3000/api/products');
-//     try {
-//         products = await res.json()
-//     } catch (e) {
-//         console.log(e)
-//     }
-//     return {
-//         props: { products }
-//     }
-// }

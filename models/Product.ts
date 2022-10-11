@@ -3,6 +3,7 @@ interface IProduct {
 	itemId: String,
 	name:  String,
 	category: String,
+	brand: String,
 	description:  String,
 	imgLink:  String,
 	price:  Number,
@@ -17,6 +18,10 @@ const productSchema = new mongoose.Schema<IProduct>({
 	category: {
 		type: String,
 		required: [true, "category required"]
+	},
+	brand: {
+		type: String,
+		required: [true, "brand required"]
 	},
 	name: {
 		type: String,
