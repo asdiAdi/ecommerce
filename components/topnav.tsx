@@ -73,18 +73,18 @@ export default function Topnav() {
                                 {toggleCategory ?
                                     <div className={styles['drop-down']} onMouseLeave={() => handleNavToggle(toggleCategory, setToggleCategory)}>
                                         <ul>
-                                            <li><Link href={'/canvas-board'}><a>Canvas Boards</a></Link></li>
-                                            <li>Acrylic paint</li>
-                                            <li>Palette Knife</li>
-                                            <li>Acrylic Medium</li>
-                                            <li>Brush</li>
-                                            <li>Oil Stick</li>
-                                            <li>Golden Fluid Acrylic</li>
-                                            <li>Encaustic Paint</li>
-                                            <li>Easel</li>
-                                            <li>Oil Paint</li>
-                                            <li>Watercolor</li>
-                                            <li>Oil Medium</li>
+                                            <li><Link href={'/category/canvas-board'}><a>Canvas Boards</a></Link></li>
+                                            <li><Link href={'/category/acrylic-paint'}><a>Acrylic paint</a></Link></li>
+                                            <li><Link href={'/category/palette-knife'}><a>Palette Knife</a></Link></li>
+                                            <li><Link href={'/category/acrylic-medium'}><a>Acrylic Medium</a></Link></li>
+                                            <li><Link href={'/category/brush'}><a>Brush</a></Link></li>
+                                            <li><Link href={'/category/oil-slick'}><a>Oil Stick</a></Link></li>
+                                            <li><Link href={'/category/golden-fluid-acrylic'}><a>Golden Fluid Acrylic</a></Link></li>
+                                            <li><Link href={'/category/encaustic-paint'}><a>Encaustic Paint</a></Link></li>
+                                            <li><Link href={'/category/easel'}><a>Easel</a></Link></li>
+                                            <li><Link href={'/category/oil-paint'}><a>Oil Paint</a></Link></li>
+                                            <li><Link href={'/category/watercolor'}><a>Watercolor</a></Link></li>
+                                            <li><Link href={'/category/oil-medium'}><a>Oil Medium</a></Link></li>
                                         </ul>
                                     </div>
                                     : null
@@ -178,33 +178,33 @@ export default function Topnav() {
                     </ul>
 
                     {toggleCategory ? <ul className={styles['mobile-nav-catin']}>
-                        <li>Canvas Boards</li>
-                        <li>Acrylic paint</li>
-                        <li>Palette Knife</li>
-                        <li>Acrylic Medium</li>
-                        <li>Brush</li>
-                        <li>Oil Stick</li>
-                        <li>Golden Fluid Acrylic</li>
-                        <li>Encaustic Paint</li>
-                        <li>Easel</li>
-                        <li>Oil Paint</li>
-                        <li>Watercolor</li>
-                        <li>Oil Medium</li>
-                    </ul> : 
-                    <ul className={styles['mobile-nav-catout']}>
-                        <li>Canvas Boards</li>
-                        <li>Acrylic paint</li>
-                        <li>Palette Knife</li>
-                        <li>Acrylic Medium</li>
-                        <li>Brush</li>
-                        <li>Oil Stick</li>
-                        <li>Golden Fluid Acrylic</li>
-                        <li>Encaustic Paint</li>
-                        <li>Easel</li>
-                        <li>Oil Paint</li>
-                        <li>Watercolor</li>
-                        <li>Oil Medium</li>
-                    </ul>}
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/canvas-board'}><a>Canvas Boards</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/acrylic-paint'}><a>Acrylic paint</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/palette-knife'}><a>Palette Knife</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/acrylic-medium'}><a>Acrylic Medium</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/brush'}><a>Brush</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-slick'}><a>Oil Stick</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/golden-fluid-acrylic'}><a>Golden Fluid Acrylic</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/encaustic-paint'}><a>Encaustic Paint</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/easel'}><a>Easel</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-paint'}><a>Oil Paint</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/watercolor'}><a>Watercolor</a></Link></li>
+                        <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-medium'}><a>Oil Medium</a></Link></li>
+                    </ul> :
+                        <ul className={styles['mobile-nav-catout']}>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/canvas-board'}><a>Canvas Boards</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/acrylic-paint'}><a>Acrylic paint</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/palette-knife'}><a>Palette Knife</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/acrylic-medium'}><a>Acrylic Medium</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/brush'}><a>Brush</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-slick'}><a>Oil Stick</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/golden-fluid-acrylic'}><a>Golden Fluid Acrylic</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/encaustic-paint'}><a>Encaustic Paint</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/easel'}><a>Easel</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-paint'}><a>Oil Paint</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/watercolor'}><a>Watercolor</a></Link></li>
+                            <li onClick={() => { handleMobileNavClose() }}><Link href={'/category/oil-medium'}><a>Oil Medium</a></Link></li>
+                        </ul>}
                 </div>
 
                 :

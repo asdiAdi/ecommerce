@@ -9,6 +9,21 @@ import { IProduct } from '../../models/Product';
 import { useRouter } from 'next/router'
 import Error404 from "../404";
 
+const categoryTitles = {
+    'canvas-board': 'Canvas & Boards',
+    'acrylic-paint': 'Acrylic Paints',
+    'palette-knife': 'Palette Knives',
+    'acrylic-medium': 'Acrylic Mediums',
+    'brush': 'Brushes',
+    'oil-slick': 'Oil Slicks',
+    'golden-fluid-acrylic': 'Golden Fluid Acrylics',
+    'encaustic-paint': 'Encaustic Paints',
+    'easel': 'Easels',
+    'oil-paint': 'Oil Paints',
+    'watercolor': 'Watercolors',
+    'oil-medium': 'Oil Mediums'
+}
+
 const Card = (props: { product: IProduct }) => {
     return (
         <div className={styles.card}>
@@ -37,24 +52,6 @@ const Card = (props: { product: IProduct }) => {
 
     )
 }
-const categories = [
-    'canvas-board',
-    'acrylic-paint',
-    'palette-knife',
-    'acrylic-medium',
-    'brush',
-    'oil-slick',
-    'golden-fluid-acrylic',
-    'encaustic-paint',
-    'easel',
-    'oil-paint',
-    'watercolor',
-    'oil-medium'
-]
-
-const categoryTitles = [
-    
-]
 
 let checkRoute = false;
 export default function Category() {
@@ -64,14 +61,13 @@ export default function Category() {
     const [firstFetch, setFirstFetch] = React.useState<boolean>(false);
     const [products, setProducts] = React.useState<any>(undefined);
     if (!checkRoute) {
-        if (!categories.includes(category as string)) {
-            return <Error404/>
-        } 
+        if (!Object.keys(categoryTitles).includes(category as string)) {
+            return <Error404 />
+        }
         checkRoute = true;
     }
     if (!firstFetch) {
-        // fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api/products' : 'http://localhost:3000/api/products')
-        fetch(process.env.VERCEL_URL + '/api/products')
+        fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api/' + router.asPath : 'http://localhost:3000/api/' + router.asPath)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -80,7 +76,7 @@ export default function Category() {
             .catch((e) => console.log(e));
         setFirstFetch(true);
     }
-    
+
     return (
         <div>
             <header>
@@ -89,8 +85,8 @@ export default function Category() {
             </header>
             <main className={styles['main-container']}>
                 <div className={styles['head-container']}>
-                    <h1>Canvas & Boards</h1>
-                    <Image src='/shopGrid/canvas-board.jpg' width={873} height={553}></Image>
+                    <h1>{categoryTitles[category as string]}</h1>
+                    <Image src={`/shopGrid/${category}.jpg`} width={873} height={553}></Image>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada, diam sed porttitor gravida, urna nunc suscipit tortor, a suscipit massa justo ut est. Maecenas lorem ipsum, fermentum sed mi vel, accumsan ullamcorper ligula. Integer suscipit felis augue, eu elementum nibh tincidunt ac. Pellentesque tempor sollicitudin neque ut volutpat. Aliquam faucibus ligula ac enim maximus dignissim. Quisque venenatis neque dolor, eget mollis ipsum consequat in. Pellentesque dictum pulvinar fermentum. Vestibulum nec pharetra erat, egestas hendrerit eros. Fusce in enim pharetra, auctor felis sed, vehicula augue. </p>
                 </div>
                 <div className={styles['product-grid']}>

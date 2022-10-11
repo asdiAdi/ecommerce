@@ -14,7 +14,7 @@ export default function ShopGrid(props: { data: ShopGridData }) {
             {
                 props.data.map((dat, idx) => (
                     <div className={styles.card} key={uuidv4()}>
-                        <Link href='/canvas-board'><a className={styles.title}>{dat.text}</a></Link>
+                        <Link href={`/category${dat.imgSrc.split('.jpg')[0].split('/shopGrid')[1]}`}><a className={styles.title}>{dat.text}</a></Link>
                         <Image src={dat.imgSrc}
                             width={873}
                             height={553}
