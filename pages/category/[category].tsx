@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { IProduct } from '../../models/Product';
 import { useRouter } from 'next/router'
 import Error404 from "../404";
+import { Url } from "url";
 
 const categoryTitles = {
     'canvas-board': 'Canvas & Boards',
@@ -54,7 +55,7 @@ const Card = (props: { product: IProduct }) => {
 }
 
 let checkRoute = false;
-export default function Category() {
+export default function Category({url}) {
     const router = useRouter();
     const { category } = router.query;
     const [isFetched, setIsFetched] = React.useState<boolean>(false);
@@ -67,7 +68,8 @@ export default function Category() {
         checkRoute = true;
     }
     if (!firstFetch) {
-        fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api/' + router.asPath : 'http://localhost:3000/api/' + router.asPath)
+        // fetch(process.env.VERCEL === '1' ? 'https://ecommerce-ivory-six.vercel.app/api' + router.asPath : 'http://localhost:3000/api' + router.asPath)
+        fetch('https://'+ url + '/api' + router.asPath)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -101,4 +103,11 @@ export default function Category() {
             <Footer />
         </div>
     )
+}
+
+
+export async function getServerSideProps() {
+    return {
+        props: {url: process.env.VERCEL_URL}
+    }
 }
