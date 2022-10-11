@@ -18,7 +18,7 @@ export default function Error404() {
             }}>
                 <h1>404</h1>
                 <h2 style={{marginBottom:'60px'}}>PAGE NOT FOUND</h2>
-                <p>The page you are looking for doesn't exist or an other error occured.</p>
+                <p>The page you are looking for doesn&apos;t exist or an other error occured.</p>
             </main>
             <Footer />
         </div>
